@@ -15,5 +15,7 @@ class cinder {
     mode    => '0600',
     content => template("cinder/api-paste.ini-${openstack_version}.erb"),
   }
+
+  realize Package['python-mysqldb']
   
 }
