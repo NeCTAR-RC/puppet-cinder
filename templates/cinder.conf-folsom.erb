@@ -7,7 +7,7 @@ volume_group = cinder-volumes
 auth_strategy = keystone
 state_path = /var/lib/cinder
 volumes_dir = /var/lib/cinder/volumes
-<% if @environment == "testing" -%>
+<% if @logdebug -%>
 verbose=True
 <%- else -%>
 verbose=False
