@@ -1,4 +1,17 @@
-class cinder {
+class cinder($db_host,
+             $db_user='cinder',
+             $db_pass,
+             $rabbit_hosts,
+             $rabbit_user='cinder',
+             $rabbit_pass,
+             $rabbit_ssl=true,
+             $rabbit_ha=true,
+             $rabbit_virtual_host'/',
+             $keystone_user,
+             $keystone_pass,
+             $volume_config,
+)
+{
 
   file { '/etc/cinder/cinder.conf':
     ensure  => present,
