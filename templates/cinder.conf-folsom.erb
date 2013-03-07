@@ -14,29 +14,21 @@ verbose=False
 <%- end -%>
 
 # Database
-sql_connection=mysql://<%= cinder_db_user %>:<%= cinder_db_pass %>@<%= cinder_db_host %>/cinder
+sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/cinder
 
 # RabbitMQ
-rabbit_hosts="<%= cinder_rabbit_hosts %>"
-<% if cinder_rabbit_ha %>
+rabbit_hosts="<%= rabbit_hosts %>"
+<% if rabbit_ha %>
 rabbit_ha_queues=True
 <% end %>
-rabbit_userid=<%= cinder_rabbit_user %>
-rabbit_password=<%= cinder_rabbit_pass %>
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_pass %>
 rabbit_durable_queues=True
-<% if cinder_rabbit_ssl %>
+<% if rabbit_ssl %>
 rabbit_use_ssl=True
 <% end %>
-rabbit_virtual_host=<%= cinder_rabbit_virtual_host %>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
 
-<% if @cinder_volume_type == 'netapp' %>
-# Netapp Volume
-volume_driver=cinder.volume.netapp.NetAppISCSIDriver
-use_local_volume=False
-netapp_wsdl_url = <%= netapp_wsdl_url %>
-netapp_login = <%= netapp_login %>
-netapp_password = <%= netapp_password %>
-netapp_server_hostname = <%= netapp_server_hostname %>
-netapp_storage_service = <%= netapp_storage_service %>
-netapp_vfiler = <%= netapp_vfiler %>
+<% volume_config.each do |key,value| %>
+<%= key %>=<%= value %>
 <% end %>
