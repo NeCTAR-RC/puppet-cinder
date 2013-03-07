@@ -22,14 +22,14 @@ class cinder::api inherits cinder {
 
 }
 
-class cinder::api::load-balanced inherits cinder::api {
+class cinder::api::load-balanced($upstream) inherits cinder::api {
 
   include nginx
 
   nginx::proxy { 'cinder':
     port         => 8776,
     ssl          => true,
-    upstreams    => $cinder_upstream,
+    upstreams    => $upstream,
     nagios_check => false,
   }
 
