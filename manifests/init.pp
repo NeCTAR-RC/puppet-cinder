@@ -8,7 +8,8 @@ class cinder($db_host,
              $rabbit_ha=true,
              $rabbit_virtual_host='/',
              $keystone_user,
-             $keystone_pass,
+             $keystone_password,
+             $memcache_servers='localhost:11211',
              $volume_config,
 )
 {

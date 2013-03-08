@@ -49,4 +49,4 @@ service_protocol = <%= scope.function_hiera(['keystone::protocol']) %>
 admin_tenant_name = <%= scope.function_hiera(['keystone::service_tenant']) %>
 admin_user = <%= keystone_user %>
 admin_password = <%= keystone_password %>
-memcache_servers = <%= memcached_servers %>
+memcache_servers = <%= memcache_servers %>
