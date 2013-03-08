@@ -30,5 +30,4 @@ rabbit_use_ssl=True
 rabbit_virtual_host=<%= rabbit_virtual_host %>
 
 <% volume_config.each do |key,value| %>
-<%= key %>=<%= value %>
-<% end %>
+<%= key %> = <%= value %><% end %>
