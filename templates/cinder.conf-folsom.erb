@@ -13,6 +13,15 @@ verbose=True
 verbose=False
 <%- end -%>
 
+osapi_volume_listen = <%= listen %>
+osapi_volume_listen_port = <%= port %>
+
+storage_availability_zone=<%= nova_cells_full_name %>
+
+# Image Service
+image_service=nova.image.glance.GlanceImageService
+glance_api_servers=<%= nova_glance_servers %>
+
 # Database
 sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/cinder
 
@@ -28,6 +37,11 @@ rabbit_durable_queues=True
 rabbit_use_ssl=True
 <% end %>
 rabbit_virtual_host=<%= rabbit_virtual_host %>
+
+
+# Quotas
+quota_volumes=0
+quota_gigabytes=0
 
 <% volume_config.each do |key,value| %>
 <%= key %> = <%= value %><% end %>
