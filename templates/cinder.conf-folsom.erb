@@ -16,14 +16,14 @@ verbose=False
 osapi_volume_listen = <%= listen %>
 osapi_volume_listen_port = <%= port %>
 
-storage_availability_zone=<%= nova_cells_full_name %>
+storage_availability_zone=<%= availability_zone %>
 
 # Image Service
 image_service=nova.image.glance.GlanceImageService
-glance_api_servers=<%= nova_glance_servers %>
+glance_api_servers=<%= glance_api_servers %>
 
 # Database
-sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/cinder
+sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>
 
 # RabbitMQ
 rabbit_hosts="<%= rabbit_hosts %>"
