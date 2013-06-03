@@ -22,6 +22,7 @@ class cinder($listen='0.0.0.0',
   $keystone_host = hiera('keystone::host')
   $keystone_protocol = hiera('keystone::protocol')
   $keystone_service_tenant = hiera('keystone::service_tenant')
+  $openstack_version = hiera('openstack_version')
 
   file { '/etc/cinder/cinder.conf':
     ensure  => present,
