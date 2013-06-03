@@ -1,5 +1,7 @@
 class cinder($listen='0.0.0.0',
              $port='8776',
+             $availability_zone,
+             $glance_api_servers,
              $db_host,
              $db_user='cinder',
              $db_pass,
