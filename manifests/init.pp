@@ -1,4 +1,6 @@
-class cinder($db_host,
+class cinder($listen='0.0.0.0',
+             $port='8776',
+             $db_host,
              $db_user='cinder',
              $db_pass,
              $rabbit_hosts,
@@ -13,6 +15,10 @@ class cinder($db_host,
              $volume_config,
 )
 {
+
+  $keystone_host = hiera('keystone::host')
+  $keystone_protocol = hiera('keystone::protocol')
+  $keystone_service_tenant = hiera('keystone::service_tenant')
 
   file { '/etc/cinder/cinder.conf':
     ensure  => present,
