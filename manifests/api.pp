@@ -12,31 +12,12 @@ class cinder::api inherits cinder {
   }
 
   nagios::service {
-    'http_openstack_18776':
-      check_command => 'http_port!18776';
+    "http_cinder":
+      check_command => "http_port!${port}";
   }
 
   nagios::nrpe::service { 'service_cinder_api':
-    check_command => '/usr/lib/nagios/plugins/check_procs -c 1:1 -u cinder -a /usr/bin/cinder-api';
-  }
-
-}
-
-class cinder::api::load-balanced($upstream) inherits cinder::api {
-
-  include nginx
-
-  nginx::proxy { 'cinder':
-    port         => 8776,
-    ssl          => true,
-    upstreams    => $upstream,
-    nagios_check => false,
-  }
-
-  nagios::service {
-    'http_openstack_8776':
-      check_command => 'https_port!8776',
-      servicegroups => 'openstack-endpoints';
+    check_command => '/usr/lib/nagios/plugins/check_procs -c 1:20 -u cinder -a /usr/bin/cinder-api';
   }
 
 }
