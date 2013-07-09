@@ -1,4 +1,4 @@
-class cinder::volume($volume_procs='1') inherits cinder {
+class cinder::volume($processes='1') inherits cinder {
 
   package {'cinder-volume':
     ensure => installed,
@@ -11,10 +11,8 @@ class cinder::volume($volume_procs='1') inherits cinder {
     require   => Package['cinder-volume'],
   }
 
-  $volume_procs = hiera('cinder::volume::processes')
-
   nagios::nrpe::service { 'service_cinder_volume':
-    check_command => '/usr/lib/nagios/plugins/check_procs -c ${procs}:${procs} -u cinder -a /usr/bin/cinder-volume';
+    check_command => '/usr/lib/nagios/plugins/check_procs -c ${processes}:${processes} -u cinder -a /usr/bin/cinder-volume';
   }
 
 }
