@@ -20,6 +20,12 @@ class cinder::api($service_ensure='running') inherits cinder {
     check_command => '/usr/lib/nagios/plugins/check_procs -c 1:20 -u cinder -a /usr/bin/cinder-api';
   }
 
+  firewall { '100 cinder-api':
+    dport  => $port,
+    proto  => tcp,
+    action => accept,
+  }
+
   define worker() {
     file { "/etc/cinder/cinder-api-${name}.conf":
       ensure  => present,
