@@ -18,6 +18,7 @@ osapi_volume_listen_port = <%= port %>
 
 # Database
 sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>
+sql_idle_timeout=60
 
 # Image Service
 image_service=nova.image.glance.GlanceImageService
