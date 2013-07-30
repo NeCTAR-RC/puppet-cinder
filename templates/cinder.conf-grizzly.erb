@@ -37,5 +37,11 @@ rabbit_use_ssl=True
 <% end %>
 rabbit_virtual_host=<%= rabbit_virtual_host %>
 
+quota_volumes=0
+quota_gigabytes=0
+quota_snapshots=0
+max_age = 60
+until_refresh = 10
+
 <% volume_config.each do |key,value| %>
 <%= key %> = <%= value %><% end %>
