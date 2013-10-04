@@ -46,3 +46,9 @@ until_refresh = 10
 
 <% volume_config.each do |key,value| %>
 <%= key %> = <%= value %><% end %>
+
+
+cinder_volume_usage_audit=True
+cinder_volume_usage_audit_period=hour
+notification_driver=cinder.openstack.common.notifier.rpc_notifier
+control_exchange=cinder
