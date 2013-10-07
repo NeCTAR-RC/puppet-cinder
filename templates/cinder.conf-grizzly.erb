@@ -44,9 +44,9 @@ quota_snapshots=0
 max_age = 60
 until_refresh = 10
 
-<% volume_config.each do |key,value| %>
-<%= key %> = <%= value %><% end %>
-
+<% volume_config.keys.sort.each do |key| -%>
+<%= key %> = <%= volume_config[key] %>
+<% end -%>
 
 cinder_volume_usage_audit=True
 cinder_volume_usage_audit_period=hour
