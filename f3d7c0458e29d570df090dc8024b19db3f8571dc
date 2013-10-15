@@ -1,0 +1,8 @@
+Change-Id: If3d7c0458e29d570df090dc8024b19db3f8571dc
+Code-Review+2: Russell Sim <russell.sim@gmail.com>
+Verified+1: Russell Sim <russell.sim@gmail.com>
+Submitted-by: Russell Sim <russell.sim@gmail.com>
+Submitted-at: Wed, 16 Oct 2013 09:55:59 +1100
+Reviewed-on: https://review.rc.nectar.org.au/882
+Project: NeCTAR-RC/puppet-cinder
+Branch: refs/meta/config
