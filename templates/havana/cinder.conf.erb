@@ -1,0 +1,54 @@
+[DEFAULT]
+rootwrap_config = /etc/cinder/rootwrap.conf
+api_paste_confg = /etc/cinder/api-paste.ini
+iscsi_helper = tgtadm
+volume_name_template = volume-%s
+volume_group = cinder-volumes
+auth_strategy = keystone
+state_path = /var/lib/cinder
+volumes_dir = /var/lib/cinder/volumes
+storage_availability_zone=<%= availability_zone %>
+<% if @logdebug -%>
+verbose=True
+debug=True
+<%- end -%>
+use_syslog=True
+
+osapi_volume_listen = <%= listen %>
+osapi_volume_listen_port = <%= port %>
+
+# Database
+sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>
+sql_idle_timeout=60
+
+# Image Service
+image_service=nova.image.glance.GlanceImageService
+glance_api_servers=<%= glance_api_servers %>
+
+# RabbitMQ
+rabbit_hosts="<%= rabbit_hosts %>"
+<% if rabbit_ha %>
+rabbit_ha_queues=True
+<% end %>
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_pass %>
+rabbit_durable_queues=True
+<% if rabbit_ssl %>
+rabbit_use_ssl=True
+<% end %>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
+
+quota_volumes=0
+quota_gigabytes=0
+quota_snapshots=0
+max_age = 60
+until_refresh = 10
+
+<% volume_config.keys.sort.each do |key| -%>
+<%= key %> = <%= volume_config[key] %>
+<% end -%>
+
+cinder_volume_usage_audit=True
+cinder_volume_usage_audit_period=hour
+notification_driver=cinder.openstack.common.notifier.rpc_notifier
+control_exchange=cinder
