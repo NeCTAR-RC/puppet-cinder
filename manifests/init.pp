@@ -29,7 +29,7 @@ class cinder($listen='0.0.0.0',
     owner   => cinder,
     group   => cinder,
     mode    => '0600',
-    content => template("cinder/cinder.conf-${openstack_version}.erb"),
+    content => template("cinder/${openstack_version}/cinder.conf.erb"),
   }
 
   file { '/etc/cinder/api-paste.ini':
@@ -37,7 +37,7 @@ class cinder($listen='0.0.0.0',
     owner   => cinder,
     group   => cinder,
     mode    => '0600',
-    content => template("cinder/api-paste.ini-${openstack_version}.erb"),
+    content => template("cinder/${openstack_version}/api-paste.ini.erb"),
   }
 
   realize Package['python-mysqldb']
