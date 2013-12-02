@@ -38,11 +38,17 @@ rabbit_use_ssl=True
 <% end %>
 rabbit_virtual_host=<%= rabbit_virtual_host %>
 
+# Quota
 quota_volumes=0
 quota_gigabytes=0
 quota_snapshots=0
 max_age = 60
 until_refresh = 10
+
+<% if @swift_url %>
+# Backup
+backup_swift_url=<%= swift_url %>
+<% end -%>
 
 <% volume_config.keys.sort.each do |key| -%>
 <%= key %> = <%= volume_config[key] %>
