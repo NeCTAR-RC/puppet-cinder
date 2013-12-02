@@ -15,6 +15,7 @@ class cinder($listen='0.0.0.0',
              $keystone_user,
              $keystone_password,
              $memcache_servers='localhost:11211',
+             $swift_url,
              $volume_config,
 )
 {
