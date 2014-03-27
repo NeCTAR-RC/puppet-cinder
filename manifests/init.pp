@@ -25,12 +25,17 @@ class cinder($listen='0.0.0.0',
   $keystone_service_tenant = hiera('keystone::service_tenant')
   $openstack_version = hiera('openstack_version')
 
+  package {'cinder-common':
+    ensure => installed,
+  }
+
   file { '/etc/cinder/cinder.conf':
     ensure  => present,
     owner   => cinder,
     group   => cinder,
     mode    => '0600',
     content => template("cinder/${openstack_version}/cinder.conf.erb"),
+    require => Package['cinder-common'],
   }
 
   file { '/etc/cinder/api-paste.ini':
@@ -39,6 +44,7 @@ class cinder($listen='0.0.0.0',
     group   => cinder,
     mode    => '0600',
     content => template("cinder/${openstack_version}/api-paste.ini.erb"),
+    require => Package['cinder-common'],
   }
 
   realize Package['python-mysqldb']
