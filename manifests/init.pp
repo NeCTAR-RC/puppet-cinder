@@ -17,6 +17,7 @@ class cinder($listen='0.0.0.0',
              $memcache_servers='localhost:11211',
              $swift_url=undef,
              $volume_config,
+             $volume_host=undef,
 )
 {
 
