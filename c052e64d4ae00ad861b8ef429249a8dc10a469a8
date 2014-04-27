@@ -1,0 +1,9 @@
+Change-Id: Ic052e64d4ae00ad861b8ef429249a8dc10a469a8
+Code-Review+1: Sam Morrison <sam.morrison@unimelb.edu.au>
+Verified+1: Jenkins <rc-melbourne@nectar.org.au>
+Code-Review+1: Edan Scriven <edan.scriven@uqconnect.edu.au>
+Submitted-by: Sam Morrison <sam.morrison@unimelb.edu.au>
+Submitted-at: Mon, 28 Apr 2014 09:34:25 +1000
+Reviewed-on: https://review.rc.nectar.org.au/1279
+Project: NeCTAR-RC/puppet-cinder
+Branch: refs/heads/master
