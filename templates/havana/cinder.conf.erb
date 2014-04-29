@@ -7,8 +7,8 @@ volume_group = cinder-volumes
 auth_strategy = keystone
 state_path = /var/lib/cinder
 volumes_dir = /var/lib/cinder/volumes
-<% if volume_host -%>
-host=<%= @volume_host -%>
+<% if @volume_host -%>
+host=<%= @volume_host %>
 <%- end -%>
 storage_availability_zone=<%= availability_zone %>
 <% if @logdebug -%>
