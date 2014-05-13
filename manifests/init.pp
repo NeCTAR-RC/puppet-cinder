@@ -48,6 +48,6 @@ class cinder($listen='0.0.0.0',
     require => Package['cinder-common'],
   }
 
-  realize Package['python-mysqldb']
+  include mysql::python
   
 }
