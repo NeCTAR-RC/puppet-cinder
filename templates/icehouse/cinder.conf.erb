@@ -12,6 +12,7 @@ use_syslog=True
 
 osapi_volume_listen = <%= listen %>
 osapi_volume_listen_port = <%= port %>
+osapi_volume_workers = <%= workers %>
 
 # Database
 sql_connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>
