@@ -25,6 +25,8 @@ class cinder($listen='0.0.0.0',
   $keystone_protocol = hiera('keystone::protocol')
   $keystone_service_tenant = hiera('keystone::service_tenant')
   $openstack_version = hiera('openstack_version')
+  $workers = $cinder::api::workers
+  $api_workers = hiera('cinder::api::workers', 1)
 
   package {'cinder-common':
     ensure => installed,
