@@ -4,6 +4,7 @@ class cinder::volume inherits cinder {
     ensure => installed,
   }
 
+
   service {'cinder-volume':
     ensure    => running,
     subscribe => [ File['/etc/cinder/cinder.conf'],
