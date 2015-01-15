@@ -18,6 +18,7 @@ class cinder($listen='0.0.0.0',
              $swift_url=undef,
              $volume_config,
              $volume_host=undef,
+             $icehouse_compat=false,
 )
 {
 
