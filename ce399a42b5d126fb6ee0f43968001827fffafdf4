@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2559ec_2a5e1fea",
+        "filename": "templates/juno/cinder.conf.erb",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000002
+      },
+      "writtenOn": "2015-01-18T23:31:43Z",
+      "side": 1,
+      "message": "memcache_servers is deprecated - it should be memcached_servers",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "ce399a42b5d126fb6ee0f43968001827fffafdf4",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
