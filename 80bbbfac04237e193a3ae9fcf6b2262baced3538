@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa2559ec_cad783ec",
+        "filename": "templates/juno/cinder.conf.erb",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2015-01-19T22:51:28Z",
+      "side": 1,
+      "message": "these are deprecated and replaced with:\n\n [database]\n connection\u003dmysql://\u003c%\u003d db_user %\u003e:\u003c%\u003d db_pass %\u003e@\u003c%\u003d db_host %\u003e/\u003c%\u003d db_name %\u003e\n idle_timeout\u003d60",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 19
+      },
+      "revId": "80bbbfac04237e193a3ae9fcf6b2262baced3538",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa2559ec_2a045f7d",
+        "filename": "templates/juno/cinder.conf.erb",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2015-01-19T22:51:28Z",
+      "side": 1,
+      "message": "this option doesn\u0027t seem to exist anymore.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "80bbbfac04237e193a3ae9fcf6b2262baced3538",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa2559ec_0a099b95",
+        "filename": "templates/juno/cinder.conf.erb",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000084
+      },
+      "writtenOn": "2015-01-19T22:51:28Z",
+      "side": 1,
+      "message": "this is deprecated and replaced with:\n\n amqp_durable_queues\u003dTrue",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "80bbbfac04237e193a3ae9fcf6b2262baced3538",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
