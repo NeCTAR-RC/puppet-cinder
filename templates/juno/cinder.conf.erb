@@ -52,6 +52,12 @@ control_exchange=cinder
 <% if @icehouse_compat -%>
 icehouse_compat=true
 <% end -%>
+<% if @ensure_az -%>
+ensure_az=true
+<% end -%>
+<% if @az_as_volume_type -%>
+az_as_volume_type=true
+<% end -%>
 
 [database]
 connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>

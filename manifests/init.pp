@@ -21,6 +21,8 @@ class cinder(
   $volume_config,
   $volume_host=undef,
   $icehouse_compat=false,
+  $ensure_az=false,
+  $az_as_volume_type=false,
 )
 {
 
