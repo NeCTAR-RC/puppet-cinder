@@ -23,6 +23,7 @@ class cinder(
   $icehouse_compat=false,
   $ensure_az=false,
   $az_as_volume_type=false,
+  $public_endpoint=undef,
 )
 {
 

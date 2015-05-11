@@ -13,7 +13,9 @@ use_syslog=True
 osapi_volume_listen = <%= listen %>
 osapi_volume_listen_port = <%= port %>
 osapi_volume_workers = <%= api_workers %>
-
+<% if @public_endpoint -%>
+public_endpoint = <%=  @public_endpoint %>
+<% end -%>
 glance_api_servers=<%= glance_api_servers %>
 
 # RabbitMQ
@@ -36,7 +38,7 @@ max_age = 60
 until_refresh = 10
 quota_consistencygroups = 0
 
-<% if @swift_url %>
+<% if @swift_url -%>
 # Backup
 backup_swift_url=<%= swift_url %>
 <% end -%>
