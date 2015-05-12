@@ -20,7 +20,7 @@ class cinder::volume inherits cinder {
   }
 
   cron { 'cinder-volume-usage-audit':
-    ensure  => present,
+    ensure  => absent,
     command => '/usr/bin/cinder-volume-usage-audit >/dev/null 2>&1',
     user    => 'root',
     minute  => 5,
