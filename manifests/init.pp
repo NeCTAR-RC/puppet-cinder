@@ -56,5 +56,5 @@ class cinder(
   }
 
   include mysql::python
-  realize(Package['python-memcache'])
+  include memcached::python
 }
