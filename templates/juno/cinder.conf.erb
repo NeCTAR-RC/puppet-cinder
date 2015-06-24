@@ -49,7 +49,7 @@ backup_swift_url=<%= swift_url %>
 
 volume_usage_audit_period=hour
 
-notification_driver=cinder.openstack.common.notifier.rpc_notifier
+notification_driver=messaging
 control_exchange=cinder
 
 <% if @icehouse_compat -%>
