@@ -18,21 +18,6 @@ public_endpoint = <%=  @public_endpoint %>
 <% end -%>
 glance_api_servers=<%= glance_api_servers %>
 
-# RabbitMQ
-rabbit_hosts="<%= rabbit_hosts %>"
-kombu_ssl_version=TLSv1
-<% if rabbit_ha -%>
-rabbit_ha_queues=True
-<% end -%>
-rabbit_userid=<%= rabbit_user %>
-rabbit_password=<%= rabbit_pass %>
-amqp_durable_queues=True
-rabbit_durable_queues=True
-<% if rabbit_ssl -%>
-rabbit_use_ssl=True
-<% end -%>
-rabbit_virtual_host=<%= rabbit_virtual_host %>
-
 # Quota
 max_age = 60
 until_refresh = 10
@@ -61,6 +46,23 @@ ensure_az=true
 <% if @az_as_volume_type -%>
 az_as_volume_type=true
 <% end -%>
+
+rabbit_durable_queues=True
+
+[oslo_messaging_rabbit]
+rabbit_hosts="<%= rabbit_hosts %>"
+<% if rabbit_ha -%>
+rabbit_ha_queues=True
+<% end -%>
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_pass %>
+amqp_durable_queues=True
+kombu_ssl_version=TLSv1
+<% if rabbit_ssl -%>
+rabbit_use_ssl=True
+kombu_ssl_version=TLSv1
+<% end -%>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
 
 [database]
 connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>
