@@ -12,7 +12,7 @@ class cinder::api($service_ensure='running', $workers=1) inherits cinder {
   }
 
   nagios::service {
-    "http_cinder":
+    'http_cinder':
       check_command => "http_port!${port}";
   }
 
@@ -22,36 +22,9 @@ class cinder::api($service_ensure='running', $workers=1) inherits cinder {
   }
 
   firewall { '100 cinder-api':
-    dport  => $port,
+    dport  => $cinder::port,
     proto  => tcp,
     action => accept,
   }
-
-  define worker() {
-    file { "/etc/cinder/cinder-api-${name}.conf":
-      ensure  => present,
-      owner   => cinder,
-      group   => cinder,
-      mode    => '0600',
-      content => "[DEFAULT]\nosapi_volume_listen_port = ${name}",
-      notify  => Service["cinder-api-${name}"],
-    }
-
-    file {"/etc/init/cinder-api-${name}.conf":
-      content => template('cinder/api-init.conf.erb'),
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-    }
-
-    service {"cinder-api-${name}":
-      ensure    => running,
-      provider  => upstart,
-      subscribe => [ File['/etc/cinder/cinder.conf'],
-                     File['/etc/cinder/api-paste.ini']],
-      require   => File["/etc/init/cinder-api-${name}.conf"],
-    }
-  }
-
 
 }
