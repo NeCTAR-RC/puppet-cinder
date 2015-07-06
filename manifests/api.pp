@@ -39,6 +39,9 @@ class cinder::api($service_ensure='running', $workers=1) inherits cinder {
 
     file {"/etc/init/cinder-api-${name}.conf":
       content => template('cinder/api-init.conf.erb'),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
     }
 
     service {"cinder-api-${name}":

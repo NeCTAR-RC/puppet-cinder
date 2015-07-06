@@ -45,6 +45,7 @@ class cinder::develop($branch='nectar/juno') inherits cinder {
     ensure => directory,
     owner  => cinder,
     group  => cinder,
+    mode   => '0755',
   }
 
   user {'cinder':
@@ -54,6 +55,8 @@ class cinder::develop($branch='nectar/juno') inherits cinder {
   file { '/etc/sudoers.d/cinder_sudoers':
     content => 'Defaults:cinder !requiretty\n\ncinder ALL = (root) NOPASSWD: /usr/local/bin/cinder-rootwrap\n',
     mode    => '0640',
+    owner   => 'root',
+    group   => 'root',
   }
   file { '/etc/cinder/rootwrap.conf':
     ensure => link,
@@ -91,6 +94,9 @@ class cinder::develop::api inherits cinder::api {
 
   file {'/etc/init/cinder-api.conf':
     source => 'puppet:///modules/cinder/api-init.conf',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
   }
   file {'/usr/local/bin/cinder-api':
     ensure => link,
