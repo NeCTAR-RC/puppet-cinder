@@ -24,6 +24,7 @@ class cinder(
   $ensure_az=false,
   $az_as_volume_type=false,
   $public_endpoint=undef,
+  $enabled_backends=undef,
 )
 {
 
