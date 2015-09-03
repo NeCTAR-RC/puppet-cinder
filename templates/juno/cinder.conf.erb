@@ -49,6 +49,17 @@ az_as_volume_type=true
 
 rabbit_durable_queues=True
 
+<% if @enabled_backends -%>
+# multi backends
+enabled_backends = <%= enabled_backends.keys.join(',') %>
+<% enabled_backends.each do |backend, backend_config| %>
+[<%= backend %>]
+<% backend_config.keys.sort.each do |key| -%>
+<%= key %> = <%= backend_config[key] %>
+<% end -%>
+<% end -%>
+<% end -%>
+
 [oslo_messaging_rabbit]
 rabbit_hosts="<%= rabbit_hosts %>"
 <% if rabbit_ha -%>
