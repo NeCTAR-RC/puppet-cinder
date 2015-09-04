@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a245df4_e317f64f",
+        "filename": "templates/juno/cinder.conf.erb",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000114
+      },
+      "writtenOn": "2015-09-04T04:22:26Z",
+      "side": 1,
+      "message": "Does this need to be wrapped in an if statement to test whether \u0027volume_config\u0027 is defined? Since it may not exist when \u0027enabled_backends\u0027 is used instead.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "02793034622f433900c1f52f373cda13409b941b",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
+    }
+  ]
+}
