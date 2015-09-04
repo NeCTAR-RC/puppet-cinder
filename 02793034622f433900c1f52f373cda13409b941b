@@ -22,6 +22,30 @@
       "revId": "02793034622f433900c1f52f373cda13409b941b",
       "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a245df4_863448df",
+        "filename": "templates/juno/cinder.conf.erb",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2015-09-04T04:30:40Z",
+      "side": 1,
+      "message": "that will be a good idea, but volume_config now is defined in base.yaml and will be imported regardless.\n\nI think we can fix this up in a separate change when needed.",
+      "parentUuid": "9a245df4_e317f64f",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "02793034622f433900c1f52f373cda13409b941b",
+      "serverId": "f182a8af-62ca-4ceb-ab81-14f8fec9c6c5",
+      "unresolved": false
     }
   ]
 }
