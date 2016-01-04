@@ -44,21 +44,6 @@ ensure_az=true
 az_as_volume_type=true
 <% end -%>
 
-rabbit_durable_queues=True
-rabbit_hosts="<%= rabbit_hosts %>"
-<% if rabbit_ha -%>
-rabbit_ha_queues=True
-<% end -%>
-rabbit_userid=<%= rabbit_user %>
-rabbit_password=<%= rabbit_pass %>
-amqp_durable_queues=True
-kombu_ssl_version=TLSv1
-<% if rabbit_ssl -%>
-rabbit_use_ssl=True
-kombu_ssl_version=TLSv1
-<% end -%>
-rabbit_virtual_host=<%= rabbit_virtual_host %>
-
 <% if @enabled_backends -%>
 # multi backends
 enabled_backends = <%= enabled_backends.keys.join(',') %>
@@ -69,6 +54,9 @@ enabled_backends = <%= enabled_backends.keys.join(',') %>
 <% end -%>
 <% end -%>
 <% end -%>
+
+[oslo_concurrency]
+lock_path = /var/lib/cinder
 
 [oslo_messaging_rabbit]
 rabbit_hosts="<%= rabbit_hosts %>"

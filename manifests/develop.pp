@@ -53,7 +53,7 @@ class cinder::develop($branch='nectar/juno') inherits cinder {
   }
 
   file { '/etc/sudoers.d/cinder_sudoers':
-    content => 'Defaults:cinder !requiretty\n\ncinder ALL = (root) NOPASSWD: /usr/local/bin/cinder-rootwrap\n',
+    content => "Defaults:cinder !requiretty\n\ncinder ALL = (root) NOPASSWD: /usr/local/bin/cinder-rootwrap\n",
     mode    => '0640',
     owner   => 'root',
     group   => 'root',
