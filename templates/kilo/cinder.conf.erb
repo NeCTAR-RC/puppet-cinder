@@ -37,17 +37,12 @@ volume_usage_audit_period=hour
 notification_driver=messaging
 control_exchange=cinder
 
-<% if @icehouse_compat -%>
-icehouse_compat=true
-<% end -%>
 <% if @ensure_az -%>
 ensure_az=true
 <% end -%>
 <% if @az_as_volume_type -%>
 az_as_volume_type=true
 <% end -%>
-
-rabbit_durable_queues=True
 
 <% if @enabled_backends -%>
 # multi backends
@@ -59,6 +54,9 @@ enabled_backends = <%= enabled_backends.keys.join(',') %>
 <% end -%>
 <% end -%>
 <% end -%>
+
+[oslo_concurrency]
+lock_path = /var/lib/cinder
 
 [oslo_messaging_rabbit]
 rabbit_hosts="<%= rabbit_hosts %>"
