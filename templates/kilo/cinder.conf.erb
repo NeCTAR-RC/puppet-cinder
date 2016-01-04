@@ -1,0 +1,87 @@
+[DEFAULT]
+auth_strategy = keystone
+<% if @volume_host -%>
+host=<%= @volume_host %>
+<%- end -%>
+storage_availability_zone=<%= availability_zone %>
+<% if @logdebug -%>
+verbose=True
+debug=True
+<%- end -%>
+use_syslog=True
+
+osapi_volume_listen = <%= listen %>
+osapi_volume_listen_port = <%= port %>
+osapi_volume_workers = <%= api_workers %>
+<% if @public_endpoint -%>
+public_endpoint = <%=  @public_endpoint %>
+<% end -%>
+glance_api_servers=<%= glance_api_servers %>
+
+# Quota
+max_age = 60
+until_refresh = 10
+quota_consistencygroups = 0
+
+<% if @swift_url -%>
+# Backup
+backup_swift_url=<%= swift_url %>
+<% end -%>
+
+<% volume_config.keys.sort.each do |key| -%>
+<%= key %> = <%= volume_config[key] %>
+<% end -%>
+
+volume_usage_audit_period=hour
+
+notification_driver=messaging
+control_exchange=cinder
+
+<% if @ensure_az -%>
+ensure_az=true
+<% end -%>
+<% if @az_as_volume_type -%>
+az_as_volume_type=true
+<% end -%>
+
+<% if @enabled_backends -%>
+# multi backends
+enabled_backends = <%= enabled_backends.keys.join(',') %>
+<% enabled_backends.each do |backend, backend_config| %>
+[<%= backend %>]
+<% backend_config.keys.sort.each do |key| -%>
+<%= key %> = <%= backend_config[key] %>
+<% end -%>
+<% end -%>
+<% end -%>
+
+[oslo_concurrency]
+lock_path = /var/lib/cinder
+
+[oslo_messaging_rabbit]
+rabbit_hosts="<%= rabbit_hosts %>"
+<% if rabbit_ha -%>
+rabbit_ha_queues=True
+<% end -%>
+rabbit_userid=<%= rabbit_user %>
+rabbit_password=<%= rabbit_pass %>
+amqp_durable_queues=True
+kombu_ssl_version=TLSv1
+<% if rabbit_ssl -%>
+rabbit_use_ssl=True
+kombu_ssl_version=TLSv1
+<% end -%>
+rabbit_virtual_host=<%= rabbit_virtual_host %>
+
+[database]
+connection=mysql://<%= db_user %>:<%= db_pass %>@<%= db_host %>/<%= db_name %>
+idle_timeout=60
+
+[keystone_authtoken]
+auth_uri = <%= keystone_protocol %>://<%= keystone_host %>:5000/v2.0
+identity_uri = <%= keystone_protocol %>://<%= keystone_host %>:35357
+admin_tenant_name = <%= keystone_service_tenant %>
+admin_user = <%= keystone_user %>
+admin_password = <%= keystone_password %>
+signing_dir = /var/lib/cinder/keystone-signing
+memcached_servers = <%= memcache_servers %>
