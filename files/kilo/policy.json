@@ -2,6 +2,7 @@
     "context_is_admin": "role:admin",
     "admin_or_owner":  "is_admin:True or project_id:%(project_id)s",
     "default": "rule:admin_or_owner",
+    "quota_admin": "role:QuotaAdmin",
 
     "admin_api": "is_admin:True",
 
@@ -30,7 +31,7 @@
     "volume_extension:volume_image_metadata": "",
 
     "volume_extension:quotas:show": "",
-    "volume_extension:quotas:update": "rule:admin_api",
+    "volume_extension:quotas:update": "rule:quota_admin",
     "volume_extension:quota_classes": "",
 
     "volume_extension:volume_admin_actions:reset_status": "rule:admin_api",
