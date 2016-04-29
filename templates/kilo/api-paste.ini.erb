@@ -20,6 +20,12 @@ noauth = request_id faultwrap sizelimit noauth apiv2
 keystone = request_id faultwrap sizelimit authtoken keystonecontext apiv2
 keystone_nolimit = request_id faultwrap sizelimit authtoken keystonecontext apiv2
 
+[filter:healthcheck]
+paste.filter_factory = oslo_middleware:Healthcheck.factory
+path = /healthcheck
+backends = disable_by_file
+disable_by_file_path = /var/run/cinder/healthcheck_disable
+
 [filter:request_id]
 paste.filter_factory = oslo_middleware.request_id:RequestId.factory
 
@@ -39,7 +45,7 @@ paste.app_factory = cinder.api.v1.router:APIRouter.factory
 paste.app_factory = cinder.api.v2.router:APIRouter.factory
 
 [pipeline:apiversions]
-pipeline = faultwrap osvolumeversionapp
+pipeline = healthcheck faultwrap osvolumeversionapp
 
 [app:osvolumeversionapp]
 paste.app_factory = cinder.api.versions:Versions.factory
