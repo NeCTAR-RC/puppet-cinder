@@ -12,7 +12,7 @@ class cinder::backup inherits cinder {
   }
 
   nagios::nrpe::service { 'service_cinder_backup':
-    check_command => '/usr/lib/nagios/plugins/check_procs -c 1:20 -u cinder -a /usr/bin/cinder-backup';
+    check_command => '/usr/lib/nagios/plugins/check_procs -c 1:20 -u cinder -a bin/cinder-backup';
   }
 
 }
