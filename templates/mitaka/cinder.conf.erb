@@ -15,6 +15,7 @@ osapi_volume_listen = <%= listen %>
 osapi_volume_listen_port = <%= port %>
 osapi_volume_workers = <%= api_workers %>
 <% if @public_endpoint -%>
+osapi_volume_base_URL = <%=  @public_endpoint %>
 public_endpoint = <%=  @public_endpoint %>
 <% end -%>
 glance_api_servers=<%= glance_api_servers %>
