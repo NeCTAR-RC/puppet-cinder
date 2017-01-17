@@ -9,6 +9,9 @@ debug=True
 <%- end -%>
 use_syslog=True
 
+scheduler_default_filters=AvailabilityZoneFilter,CapacityFilter,CapabilitiesFilter,DriverFilter
+scheduler_default_weighers=CapacityWeigher,GoodnessWeigher
+
 storage_availability_zone=<%= availability_zone %>
 
 osapi_volume_listen = <%= listen %>
