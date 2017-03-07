@@ -6,8 +6,12 @@ host=<%= @volume_host %>
 <% if @logdebug -%>
 verbose=True
 debug=True
+<%- else -%>
+use_stderr=False
+verbose=False
 <%- end -%>
 use_syslog=True
+syslog_log_facility=LOG_USER
 
 scheduler_default_filters=AvailabilityZoneFilter,CapacityFilter,CapabilitiesFilter,DriverFilter
 scheduler_default_weighers=CapacityWeigher,GoodnessWeigher
