@@ -56,8 +56,8 @@ az_as_volume_type=true
 enabled_backends = <%= @enabled_backends.keys.sort.join(',') %>
 <% @enabled_backends.sort.each do |backend, backend_config| %>
 [<%= backend %>]
-<% @backend_config.keys.sort.each do |key| -%>
-<%= key %> = <%= @backend_config[key] %>
+<% backend_config.keys.sort.each do |key| -%>
+<%= key %> = <%= backend_config[key] %>
 <% end -%>
 <% end -%>
 <% end -%>
