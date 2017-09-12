@@ -2,6 +2,7 @@ class cinder::scheduler inherits cinder {
 
   package {'cinder-scheduler':
     ensure => installed,
+    tag    => 'openstack',
   }
 
   service {'cinder-scheduler':

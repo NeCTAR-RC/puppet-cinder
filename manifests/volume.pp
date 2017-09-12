@@ -2,6 +2,7 @@ class cinder::volume inherits cinder {
 
   package {'cinder-volume':
     ensure => installed,
+    tag    => 'openstack',
   }
 
   service {'cinder-volume':

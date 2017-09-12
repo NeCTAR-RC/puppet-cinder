@@ -2,6 +2,7 @@ class cinder::api($service_ensure='running', $workers=1) inherits cinder {
 
   package {'cinder-api':
     ensure => installed,
+    tag    => 'openstack',
   }
 
   service {'cinder-api':

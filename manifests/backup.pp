@@ -2,6 +2,7 @@ class cinder::backup inherits cinder {
 
   package {'cinder-backup':
     ensure => installed,
+    tag    => 'openstack',
   }
 
   service {'cinder-backup':

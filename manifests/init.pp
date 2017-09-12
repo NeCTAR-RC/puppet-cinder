@@ -36,6 +36,7 @@ class cinder(
 
   package {'cinder-common':
     ensure => installed,
+    tag    => 'openstack',
   }
 
   file { '/etc/cinder/cinder.conf':
