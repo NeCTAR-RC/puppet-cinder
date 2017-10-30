@@ -18,7 +18,7 @@ class cinder(
   $keystone_password,
   $memcache_servers='localhost:11211',
   $swift_url=undef,
-  $volume_config,
+  $volume_config=undef,
   $volume_host=undef,
   $icehouse_compat=false,
   $ensure_az=false,
