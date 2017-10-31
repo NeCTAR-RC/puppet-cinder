@@ -12,14 +12,13 @@ class cinder::api($service_ensure='running', $workers=1) inherits cinder {
     require   => Package['cinder-api'],
   }
 
-  nagios::service {
-    'http_cinder':
-      check_command => "http_port!${port}";
+  nagios::service {'http_cinder':
+    check_command => 'http_port!8776',
   }
 
   if $service_ensure == 'running' {
     $workers_real = $workers + 1
-    nagios::nrpe::service { 'service_cinder_api':
+    nagios::nrpe::service {'service_cinder_api':
       check_command => "/usr/lib/nagios/plugins/check_procs -c ${workers_real}:${workers_real} -u cinder -a bin/cinder-api";
     }
   }
