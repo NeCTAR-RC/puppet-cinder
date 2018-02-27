@@ -13,6 +13,7 @@ verbose=False
 use_syslog=True
 syslog_log_facility=LOG_USER
 
+transport_url=<%= @transport_url %>
 scheduler_default_filters=AvailabilityZoneFilter,CapacityFilter,CapabilitiesFilter,DriverFilter
 scheduler_default_weighers=CapacityWeigher,GoodnessWeigher
 
@@ -26,6 +27,7 @@ osapi_volume_base_URL = <%=  @public_endpoint %>
 public_endpoint = <%=  @public_endpoint %>
 <% end -%>
 glance_api_servers=<%= @glance_api_servers %>
+glance_api_version=2
 volume_usage_audit_period=hour
 control_exchange=cinder
 
@@ -65,22 +67,18 @@ enabled_backends = <%= @enabled_backends.keys.sort.join(',') %>
 lock_path = /var/lib/cinder
 
 [oslo_messaging_rabbit]
-rabbit_hosts="<%= @rabbit_hosts %>"
 <% if @rabbit_ha -%>
 rabbit_ha_queues=True
 <% end -%>
-rabbit_userid=<%= @rabbit_user %>
-rabbit_password=<%= @rabbit_pass %>
 amqp_durable_queues=True
 kombu_ssl_version=TLSv1
 <% if @rabbit_ssl -%>
 rabbit_use_ssl=True
 <% end -%>
-rabbit_virtual_host=<%= @rabbit_virtual_host %>
 heartbeat_timeout_threshold=60
 
 [database]
-connection=mysql://<%= @db_user %>:<%= @db_pass %>@<%= @db_host %>/<%= @db_name %>
+connection=mysql+pymysql://<%= @db_user %>:<%= @db_pass %>@<%= @db_host %>/<%= @db_name %>
 idle_timeout=60
 
 [keystone_authtoken]
