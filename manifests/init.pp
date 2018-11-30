@@ -64,5 +64,4 @@ class cinder(
   }
 
   include ::memcached::python
-  include ::mysql::bindings::python
 }
