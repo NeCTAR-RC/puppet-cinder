@@ -63,6 +63,6 @@ class cinder(
     require => Package['cinder-common'],
   }
 
-  include mysql::python
+  include mariadb::python
   include memcached::python
 }
