@@ -22,6 +22,7 @@ class cinder(
   $az_as_volume_type=false,
   $public_endpoint=undef,
   $enabled_backends=undef,
+  $log_file=undef,
 )
 {
 
