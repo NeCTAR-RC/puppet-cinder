@@ -43,6 +43,11 @@ az_as_volume_type=true
 max_age = 60
 until_refresh = 10
 
+# max volume size in gb
+<% if @max_volume_size -%>
+per_volume_size_limit = <%= @max_volume_size %>
+<% end -%>
+
 <% if @swift_url -%>
 # Backup
 backup_swift_url=<%= @swift_url %>
