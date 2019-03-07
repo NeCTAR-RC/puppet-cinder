@@ -23,6 +23,7 @@ class cinder(
   $public_endpoint=undef,
   $enabled_backends=undef,
   $log_file=undef,
+  $scheduler_default_filters=['AvailabilityZoneFilter','CapacityFilter','CapabilitiesFilter','DriverFilter'],
 )
 {
 
