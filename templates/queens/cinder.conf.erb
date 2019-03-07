@@ -16,7 +16,7 @@ use_syslog=True
 use_stderr=False
 
 transport_url=<%= @transport_url %>
-scheduler_default_filters=AvailabilityZoneFilter,CapacityFilter,CapabilitiesFilter,DriverFilter
+scheduler_default_filters=<%= @scheduler_default_filters.join(',') %>
 scheduler_default_weighers=CapacityWeigher,GoodnessWeigher
 
 storage_availability_zone=<%= @availability_zone %>
