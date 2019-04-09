@@ -33,6 +33,16 @@ class cinder(
   $openstack_version = hiera('openstack_version')
   $api_workers = hiera('cinder::api::workers', 1)
 
+
+  $database_connection_real = hiera('cinder::db::database_connection', undef)
+
+  if $database_connection_real {
+    $database_connection = $database_connection_real
+  } else {
+    $database_connection = "mysql+pymysql://${db_user}:${db_pass}@${db_host}/${db_name}"
+    notify {'cinder::db_user, cinder::db_pass, cinder::db_host and cinder::db_name are deprecated. Please set cinder::db::database_connection':}
+  }
+
   package {'cinder-common':
     ensure => installed,
     tag    => 'openstack',
