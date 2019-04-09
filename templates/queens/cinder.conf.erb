@@ -78,7 +78,7 @@ ssl=True
 heartbeat_timeout_threshold=60
 
 [database]
-connection=mysql+pymysql://<%= @db_user %>:<%= @db_pass %>@<%= @db_host %>/<%= @db_name %>
+connection=<%= @database_connection %>
 connection_recycle_time=60
 
 [keystone_authtoken]
