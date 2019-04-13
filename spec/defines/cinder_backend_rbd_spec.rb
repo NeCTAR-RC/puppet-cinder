@@ -97,18 +97,6 @@ describe 'cinder::backend::rbd' do
     end
   end
 
-  shared_examples 'cinder::backend::rbd on Debian' do
-    it { is_expected.to contain_file('/etc/init/cinder-volume.override').with(
-      :ensure => 'present'
-    )}
-
-    it { is_expected.to contain_file_line('set initscript env rbd-ssd').with(
-      :line   => /env CEPH_ARGS=\"--id test\"/,
-      :path   => '/etc/init/cinder-volume.override',
-      :notify => 'Anchor[cinder::service::begin]'
-    )}
-  end
-
   shared_examples 'cinder::backend::rbd on RedHat' do
     it { is_expected.to contain_file('/etc/sysconfig/openstack-cinder-volume').with(
       :ensure => 'present'
@@ -129,8 +117,11 @@ describe 'cinder::backend::rbd' do
         facts.merge!(OSDefaults.get_facts())
       end
 
-      it_behaves_like 'cinder::backend::rbd'
-      it_behaves_like "cinder::backend::rbd on #{facts[:osfamily]}"
+      case facts[:osfamily]
+      when 'RedHat'
+        it_behaves_like 'cinder::backend::rbd'
+        it_behaves_like "cinder::backend::rbd on RedHat"
+      end
     end
   end
 end

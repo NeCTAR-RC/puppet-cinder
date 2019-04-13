@@ -157,19 +157,19 @@ define cinder::backend::rbd (
     'RedHat': {
       $override_line    = "export CEPH_ARGS=\"--id ${rbd_user}\""
       $override_match   = '^export CEPH_ARGS='
+
+      # Creates an empty file if it doesn't yet exist
+      ensure_resource('file', $::cinder::params::ceph_init_override, {'ensure' => 'present'})
+
+      file_line { "set initscript env ${name}":
+        line   => $override_line,
+        path   => $::cinder::params::ceph_init_override,
+        notify => Anchor['cinder::service::begin'],
+      }
     }
     default: {
       fail("unsupported osfamily ${::osfamily}, currently Debian and Redhat are the only supported platforms")
     }
-  }
-
-  # Creates an empty file if it doesn't yet exist
-  ensure_resource('file', $::cinder::params::ceph_init_override, {'ensure' => 'present'})
-
-  file_line { "set initscript env ${name}":
-    line   => $override_line,
-    path   => $::cinder::params::ceph_init_override,
-    notify => Anchor['cinder::service::begin'],
   }
 
 }
