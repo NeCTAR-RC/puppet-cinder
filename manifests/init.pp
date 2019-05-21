@@ -53,12 +53,12 @@ class cinder(
     require => Package['cinder-common'],
   }
 
-  file { '/etc/cinder/policy.json':
+  file { '/etc/cinder/policy.yaml':
     ensure  => present,
     owner   => cinder,
     group   => cinder,
     mode    => '0644',
-    source  => "puppet:///modules/cinder/${openstack_version}/policy.json",
+    source  => "puppet:///modules/cinder/${openstack_version}/policy.yaml",
     require => Package['cinder-common'],
   }
 
