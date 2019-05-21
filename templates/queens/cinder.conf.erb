@@ -64,6 +64,9 @@ enabled_backends = <%= @enabled_backends.keys.sort.join(',') %>
 <% end -%>
 <% end -%>
 
+[oslo_policy]
+policy_file=/etc/cinder/policy.yaml
+
 [oslo_concurrency]
 lock_path = /var/lib/cinder
 
