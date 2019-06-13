@@ -62,5 +62,14 @@ class cinder(
     require => Package['cinder-common'],
   }
 
+  file { '/etc/cinder/resource_filters.json':
+    ensure  => present,
+    owner   => cinder,
+    group   => cinder,
+    mode    => '0644',
+    source  => "puppet:///modules/cinder/${openstack_version}/resource_filters.json",
+    require => Package['cinder-common'],
+  }
+
   include ::memcached::python
 }
