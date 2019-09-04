@@ -42,6 +42,7 @@ class cinder(
     mode    => '0600',
     content => template("cinder/${openstack_version}/cinder.conf.erb"),
     require => Package['cinder-common'],
+    notify  => Service[$::apache::service::service_name],
   }
 
   file { '/etc/cinder/api-paste.ini':
@@ -51,6 +52,7 @@ class cinder(
     mode    => '0600',
     content => template("cinder/${openstack_version}/api-paste.ini.erb"),
     require => Package['cinder-common'],
+    notify  => Service[$::apache::service::service_name],
   }
 
   file { '/etc/cinder/policy.yaml':
@@ -72,6 +74,7 @@ class cinder(
     mode    => '0644',
     source  => "puppet:///modules/cinder/${openstack_version}/resource_filters.json",
     require => Package['cinder-common'],
+    notify  => Service[$::apache::service::service_name],
   }
 
   include ::memcached::python
