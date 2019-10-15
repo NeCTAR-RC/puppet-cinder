@@ -80,6 +80,9 @@ ssl=True
 <% end -%>
 heartbeat_timeout_threshold=60
 
+[oslo_middleware]
+enable_proxy_headers_parsing = True
+
 [database]
 connection=<%= @database_connection %>
 connection_recycle_time=60
