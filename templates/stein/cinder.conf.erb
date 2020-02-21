@@ -83,6 +83,9 @@ heartbeat_timeout_threshold=60
 [oslo_middleware]
 enable_proxy_headers_parsing = True
 
+[oslo_messaging_notifications]
+driver=messagingv2
+
 [database]
 connection=<%= @database_connection %>
 connection_recycle_time=60
