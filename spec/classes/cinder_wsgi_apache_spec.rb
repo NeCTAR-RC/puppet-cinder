@@ -42,7 +42,7 @@ describe 'cinder::wsgi::apache' do
           },
           :access_log_file             => '/var/log/httpd/access_log',
           :access_log_format           => 'some format',
-          :error_log_file              => '/var/log/httpd/error_log'
+          :error_log_syslog            => 'syslog:local0'
         }
       end
       it { is_expected.to contain_class('cinder::params') }
@@ -71,7 +71,7 @@ describe 'cinder::wsgi::apache' do
         },
         :access_log_file           => '/var/log/httpd/access_log',
         :access_log_format         => 'some format',
-        :error_log_file            => '/var/log/httpd/error_log'
+        :error_log_syslog          => 'syslog:local0'
       )}
     end
   end
