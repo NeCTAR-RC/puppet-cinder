@@ -69,6 +69,10 @@
 #   with volume_backend_name=$volume_backend_name key/value.
 #   Defaults to false.
 #
+# [*manage_package*]
+#   (Optional) Whether or not manage Cinder support package.
+#   Defaults to true.
+#
 # [*extra_options*]
 #   (optional) Hash of extra options to pass to the backend stanza
 #   Defaults to: {}
@@ -90,6 +94,7 @@ define cinder::backend::rbd (
   $rados_connection_retries         = $::os_service_default,
   $rbd_store_chunk_size             = $::os_service_default,
   $manage_volume_type               = false,
+  $manage_package                   = true,
   $extra_options                    = {},
 ) {
 
@@ -142,10 +147,12 @@ define cinder::backend::rbd (
     }
   }
 
-  ensure_packages( 'ceph-common', {
-    ensure => present,
-    name   => $::cinder::params::ceph_common_package_name,
-    tag    => 'cinder-support-package'})
+  if $manage_package {
+    ensure_packages( 'ceph-common', {
+      ensure => present,
+      name   => $::cinder::params::ceph_common_package_name,
+      tag    => 'cinder-support-package'})
+  }
 
   create_resources('cinder_config', $extra_options)
 
