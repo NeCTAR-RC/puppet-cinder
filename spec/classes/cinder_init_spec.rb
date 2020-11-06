@@ -276,6 +276,18 @@ describe 'cinder' do
     end
   end
 
+    context 'with volume api paramaters' do
+      let :params do
+        req_params.merge!({
+          :enable_force_upload => true,
+        })
+      end
+      it 'should set volume api parameters' do
+        is_expected.to contain_cinder_config('DEFAULT/enable_force_upload').with_value(true)
+      end
+    end
+  end
+
   on_supported_os({
     :supported_os => OSDefaults.get_supported_os
   }).each do |os,facts|
