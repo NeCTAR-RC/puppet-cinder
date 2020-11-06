@@ -249,6 +249,17 @@ describe 'cinder' do
 
       it { is_expected.to contain_cinder_config('DEFAULT/transport_url').with_value('rabbit://rabbit_user:password@localhost:5673') }
     end
+
+    context 'with volume api paramaters' do
+      let :params do
+        req_params.merge!({
+          :enable_force_upload => true,
+        })
+      end
+      it 'should set volume api parameters' do
+        is_expected.to contain_cinder_config('DEFAULT/enable_force_upload').with_value(true)
+      end
+    end
   end
 
   on_supported_os({
