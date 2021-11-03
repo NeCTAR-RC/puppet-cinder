@@ -28,6 +28,10 @@
 #   (optional) Template string to be used to generate backup names.
 #   Defaults to $::os_service_default
 #
+# [*backup_use_same_host*]
+#   (optional) Backup services use same backend (boolean value)
+#   Defaults to false
+#
 # === Author(s)
 #
 # Emilien Macchi <emilien.macchi@enovance.com>
@@ -55,6 +59,7 @@ class cinder::backup (
   $backup_manager       = $::os_service_default,
   $backup_api_class     = $::os_service_default,
   $backup_name_template = $::os_service_default,
+  $backup_use_same_host = $::os_service_default,
 ) {
 
   include cinder::deps
@@ -91,6 +96,7 @@ class cinder::backup (
     'DEFAULT/backup_manager':       value => $backup_manager;
     'DEFAULT/backup_api_class':     value => $backup_api_class;
     'DEFAULT/backup_name_template': value => $backup_name_template;
+    'DEFAULT/backup_use_same_host': value => $backup_use_same_host;
   }
 
 }
